@@ -39,7 +39,10 @@ function getWeather(city) {
 
 function displayWeather(data) {
     const weatherDiv = document.getElementById('weather');
+    const mapDiv = document.getElementById('map');
     const city = data.city.name;
+    const { lat, lon } = data.city.coord;
+
 
     let forecastHTML = `<h2>Pronóstico para ${city}</h2>`;
     for (let i = 0; i < data.list.length; i += 8) { // Cada 8 registros equivale a 24 horas
@@ -58,4 +61,17 @@ function displayWeather(data) {
     }
 
     weatherDiv.innerHTML = forecastHTML;
+    // Generar el mapa interactivo
+    mapDiv.innerHTML = `
+        <h2>Mapa Interactivo</h2>
+        <iframe
+            src="https://openweathermap.org/weathermap?basemap=map&cities=true&layer=temperature&lat=${lat}&lon=${lon}&zoom=8"
+            width="100%"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    `;
+
 }
