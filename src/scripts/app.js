@@ -1,5 +1,9 @@
 const apiKey = 'f90c95373eae09403ee16df62d24d5cd'; // Asegúrate de que esta clave sea válida
 
+document.getElementById('weather').style.display = 'none';
+
+document.getElementById('weather').style.display = 'none';
+
 document.getElementById('getWeather').addEventListener('click', () => {
     const city = document.getElementById('city').value.trim();
     if (city) {
