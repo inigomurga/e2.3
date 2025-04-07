@@ -61,3 +61,21 @@ button:hover {
     margin: 5px 0;
     font-size: 1em;
 }
+
+/* Contenedor del mapa */
+#map {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#map h2 {
+    color: #0056b3;
+    margin-bottom: 10px;
+}
