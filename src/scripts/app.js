@@ -10,7 +10,7 @@ document.getElementById('getWeather').addEventListener('click', () => {
 });
 
 function getWeather(city) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
     console.log('URL generada:', url); // Verifica la URL generada
 
     fetch(url)
@@ -39,13 +39,23 @@ function getWeather(city) {
 
 function displayWeather(data) {
     const weatherDiv = document.getElementById('weather');
-    const temperature = data.main.temp;
-    const description = data.weather[0].description;
-    const city = data.name;
+    const city = data.city.name;
 
-    weatherDiv.innerHTML = `
-        <h2>Pronóstico para ${city}</h2>
-        <p>Temperatura: ${temperature} °C</p>
-        <p>Descripción: ${description}</p>
-    `;
+    let forecastHTML = `<h2>Pronóstico para ${city}</h2>`;
+    for (let i = 0; i < data.list.length; i += 8) { // Cada 8 registros equivale a 24 horas
+        const forecast = data.list[i];
+        const date = new Date(forecast.dt * 1000).toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+        const temperature = forecast.main.temp;
+        const description = forecast.weather[0].description;
+
+        forecastHTML += `
+            <div>
+                <h3>${date}</h3>
+                <p>Temperatura: ${temperature} °C</p>
+                <p>Descripción: ${description}</p>
+            </div>
+        `;
+    }
+
+    weatherDiv.innerHTML = forecastHTML;
 }
