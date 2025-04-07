@@ -43,6 +43,7 @@ function displayWeather(data) {
     const city = data.city.name;
     const { lat, lon } = data.city.coord;
 
+
     let forecastHTML = `<h2>Pronóstico para ${city}</h2>`;
     for (let i = 0; i < data.list.length; i += 8) { // Cada 8 registros equivale a 24 horas
         const forecast = data.list[i];
@@ -60,7 +61,6 @@ function displayWeather(data) {
     }
 
     weatherDiv.innerHTML = forecastHTML;
-
     // Generar el mapa interactivo
     mapDiv.innerHTML = `
         <h2>Mapa Interactivo</h2>
@@ -73,4 +73,5 @@ function displayWeather(data) {
             loading="lazy">
         </iframe>
     `;
+
 }
