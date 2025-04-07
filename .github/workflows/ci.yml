@@ -1,0 +1,37 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Configura el repositorio
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Configura Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    # Instala http-server para servir el proyecto
+    - name: Install http-server
+      run: npm install -g http-server
+
+    # Inicia el servidor y verifica que el archivo index.html esté accesible
+    - name: Run basic test
+      run: |
+        http-server ./weather-forecast-app/src -p 8080 &
+        sleep 5
+        curl -I http://localhost:8080/index.html
