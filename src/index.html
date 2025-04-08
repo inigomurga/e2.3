@@ -8,20 +8,30 @@
 </head>
 <body>
     <h1>Pronóstico del Tiempo</h1>
-    <input type="text" id="city" placeholder="Ingresa una ciudad">
-    <button id="getWeather">Obtener Pronóstico</button>
-
-    <div id="weather"></div>
-    <div id="map"></div>
-
+    <div id="search" style="display: none;">
+        <input type="text" id="city" placeholder="Ingresa una ciudad">
+        <button id="getWeather">Obtener Pronóstico</button>
+        <button id="downloadCsv" style="display: none;">Descargar CSV</button>
+        <input type="email" id="recipientEmail" placeholder="Correo del destinatario" style="display: none;">
+        <button id="sendEmail" style="display: none;">Enviar por Correo</button>
+        <p id="emailMessage" style="color: red;"></p>
+    </div>
+    <div id="weather" style="display: none;"></div>
+    <div id="map" style="display: none;"></div>
     <div id="login">
         <h2>Iniciar Sesión</h2>
-        <input type="text" id="username" placeholder="Usuario">
+        <input type="email" id="email" placeholder="Correo">
         <input type="password" id="password" placeholder="Contraseña">
         <button id="loginButton">Iniciar Sesión</button>
         <p id="loginMessage" style="color: red;"></p>
     </div>
-
+    <div id="register">
+        <h2>Registrarse</h2>
+        <input type="email" id="registerEmail" placeholder="Correo">
+        <input type="password" id="registerPassword" placeholder="Contraseña">
+        <button id="registerButton">Registrarse</button>
+        <p id="registerMessage" style="color: red;"></p>
+    </div>
     <script src="./scripts/app.js"></script>
     <script src="./scripts/auth.js"></script>
 </body>
