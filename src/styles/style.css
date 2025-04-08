@@ -113,3 +113,56 @@ button:hover {
     margin-bottom: 5px;
     color: #333;
 }
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    input[type="text"], input[type="email"] {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 300px;
+        margin: 5px 0;
+    }
+
+    #weather {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    #map {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .forecast-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .forecast-item {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .forecast-item {
+        max-width: 100%;
+    }
+}
